@@ -10,8 +10,7 @@ import {
 } from "./style";
 import Header from "../../components/Header";
 
-const PokemonDetailPage = (props) => {
-  const {setPage} = props
+const PokemonDetailPage = () => {
   const btnLClass = "btnLActive";
   const btnR = {
     class: "deletePokemon",
@@ -21,7 +20,7 @@ const PokemonDetailPage = (props) => {
 
   return (
     <>
-      <Header btnLClass={btnLClass} btnR={btnR} setPage={setPage} />
+      <Header btnLClass={btnLClass} btnR={btnR} />
       <DetailContainer>
         <h2>Detalhes</h2>
         <DetailCardContainer>
