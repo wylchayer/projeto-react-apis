@@ -1,23 +1,25 @@
 import React from "react";
 import { HeaderStyle, Button } from "./style";
 import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import { goToPokemonList, goToPokedex } from "../../routes/coordinator";
 
 const Header = (props) => {
-  const { btnLClass, btnR, setPage } = props;
-  console.log(btnR.action);
+  const navigate = useNavigate()
+  const { btnLClass, btnR } = props;
 
   const actionBtnR = () => {
     if (btnR.action === "pokedexPage") {
-      setPage("pokedexPage");
+      goToPokedex(navigate);
     } else {
       alert("Pokémon excluído");
-      setPage("pokedexPage");
+      goToPokedex(navigate);
     }
   };
 
   return (
     <HeaderStyle>
-      <Button className={btnLClass} onClick={() => setPage("pokemonsPage")}>
+      <Button className={btnLClass} onClick={() => goToPokemonList(navigate)}>
         {"< Todos Pokémons"}
       </Button>
       <img src={logo} alt="" />
