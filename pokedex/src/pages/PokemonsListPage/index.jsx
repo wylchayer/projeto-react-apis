@@ -2,6 +2,7 @@ import React from "react";
 import PokemonCard from "../../components/PokemonCard";
 import { PokemonListContainer, PokemonList } from "./style";
 import Header from "../../components/Header";
+import { PokemonTeste } from "../../temp/pokemonTeste";
 
 const PokemonsListPage = () => {
   const btnLClass = "";
@@ -10,7 +11,6 @@ const PokemonsListPage = () => {
     action: "pokedexPage",
     name: "Pokédex",
   };
-  const arrayTeste = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   return (
     <>
@@ -18,8 +18,8 @@ const PokemonsListPage = () => {
       <PokemonListContainer>
         <h2>Todos Pokémons</h2>
         <PokemonList>
-          {arrayTeste.map((e) => {
-            return <PokemonCard key={e} />;
+          {PokemonTeste.map((pokemon) => {
+            return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
           })}
         </PokemonList>
       </PokemonListContainer>

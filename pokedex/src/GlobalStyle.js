@@ -14,7 +14,6 @@ export const GlobalStyle = styled.createGlobalStyle`
 `;
 
 export const Body = styled.styled.div`
-border: 1px solid red;
 max-width: 1440px;
 margin: 0px auto;
 `
