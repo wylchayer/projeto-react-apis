@@ -7,5 +7,5 @@ export const goToPokedex = (navigate) => {
 };
 
 export const goToPokemonDetail = (navigate) => {
-  navigate("/detail");
+  navigate(`/detail`);
 };

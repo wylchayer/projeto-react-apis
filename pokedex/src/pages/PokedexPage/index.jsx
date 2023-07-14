@@ -2,9 +2,9 @@ import React from "react";
 import PokemonCard from "../../components/PokemonCard";
 import { PokedexListContainer, PokedexList } from "./style";
 import Header from "../../components/Header";
+import { PokemonTeste } from "../../temp/pokemonTeste";
 
 const PokedexPage = () => {
-  const arrayTeste = [0, 1, 2, 3, 4, 5, 6];
   const btnLClass = "btnLActive";
   const btnR = {
     class: "",
@@ -18,8 +18,8 @@ const PokedexPage = () => {
       <PokedexListContainer>
         <h2>Meus Pokémons</h2>
         <PokedexList>
-          {arrayTeste.map((e) => {
-            return <PokemonCard key={e} />;
+          {PokemonTeste.map((pokemon) => {
+            return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
           })}
         </PokedexList>
       </PokedexListContainer>

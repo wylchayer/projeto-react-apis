@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const PokedexListContainer = styled.main`
-  border: 1px solid red;
+  background-color: #5d5d5d;
+  color: #ffffff;
   padding: 2%;
   h2 {
     margin-bottom: 1rem;
@@ -11,8 +12,7 @@ export const PokedexListContainer = styled.main`
 `;
 
 export const PokedexList = styled.section`
-  border: 1px solid lightcoral;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
