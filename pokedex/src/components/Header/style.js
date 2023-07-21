@@ -18,6 +18,15 @@ export const Button = styled.button`
   width: 287px;
   visibility: hidden;
 
+  &.toPokemonsListPage {
+    border-radius: inherit;
+    color: #000000;
+    background: none;
+    height: auto;
+    width: auto;
+    visibility: visible;
+  }
+
   &.toPokedexPage {
     background-color: #33a4f5;
     visibility: visible;
@@ -32,16 +41,16 @@ export const Button = styled.button`
     visibility: visible;
   }
 
-  &.btnLActive {
-    border-radius: inherit;
-    color: #000000;
-    background: none;
-    height: auto;
-    width: auto;
+  &.catchPokemon {
+    background-color: #33a4f5;
+    font-size: 16px;
+    font-weight: 400;
+    height: 54px;
+    width: 226px;
     visibility: visible;
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
   }
 `;

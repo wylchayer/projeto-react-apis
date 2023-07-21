@@ -69,7 +69,7 @@ export const PokemonImgCard = styled.img`
   z-index: 2;
 `;
 
-export const ButtonCatch = styled.button`
+export const Button = styled.button`
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -81,4 +81,16 @@ export const ButtonCatch = styled.button`
   height: 38px;
   width: 146px;
   z-index: 2;
+
+  &.deletePokemon{
+    background-color: red;
+    color: #ffffff;
+  }
+
+  &.catchedPokemon{
+    background-color: gray;
+    color: #ffffff;
+    cursor: inherit;
+    opacity: 0.7;
+  }
 `;

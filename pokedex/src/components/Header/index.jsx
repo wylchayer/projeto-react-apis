@@ -1,30 +1,31 @@
 import React from "react";
 import { HeaderStyle, Button } from "./style";
 import logo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
-import { goToPokemonList, goToPokedex } from "../../routes/coordinator";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { goToPokemonList } from "../../routes/coordinator";
+import useDefineButtonHeader from "../../hooks/useDefineButtonHeader";
 
-const Header = (props) => {
-  const navigate = useNavigate()
-  const { btnLClass, btnR } = props;
-
-  const actionBtnR = () => {
-    if (btnR.action === "pokedexPage") {
-      goToPokedex(navigate);
-    } else {
-      alert("Pokémon excluído");
-      goToPokedex(navigate);
-    }
-  };
+const Header = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+  const location = useLocation().pathname;
+  const [thisButton, clickButton] = useDefineButtonHeader(
+    +params.idPokemon,
+    location,
+    navigate
+  );
 
   return (
     <HeaderStyle>
-      <Button className={btnLClass} onClick={() => goToPokemonList(navigate)}>
+      <Button
+        className={location !== "/" && "toPokemonsListPage"}
+        onClick={() => goToPokemonList(navigate)}
+      >
         {"< Todos Pokémons"}
       </Button>
       <img src={logo} alt="" />
-      <Button className={btnR.class} onClick={actionBtnR}>
-        {btnR.name}
+      <Button className={thisButton.class} onClick={clickButton}>
+        {thisButton.name}
       </Button>
     </HeaderStyle>
   );

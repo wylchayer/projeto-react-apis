@@ -15,4 +15,11 @@ export const PokedexList = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  > h3 {
+    flex-grow: 1;
+    text-align: center;
+    justify-self: center;
+    font-size: 2rem;
+  }
 `;
