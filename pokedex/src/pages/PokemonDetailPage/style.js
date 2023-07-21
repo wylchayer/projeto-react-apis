@@ -65,7 +65,6 @@ export const BoxInfos = styled.div`
   background-color: #ffffff;
   border-radius: 12px;
   grid-area: boxInfos;
-  height: 100%;
   width: 100%;
   padding: 20px;
 
@@ -105,7 +104,7 @@ export const StatsBase = styled.p`
 `;
 
 export const BaseBar = styled.div`
-  --progress: calc((${(prop) => prop.base}/80)*100);
+  --progress: calc((${(prop) => prop.base} / 80) * 100);
   display: flex;
   padding: 0.6rem;
 
@@ -142,7 +141,6 @@ export const TypesPokemonContainerDetail = styled.div`
 `;
 
 export const TypePokemonDetail = styled.img`
-  height: 31;
   margin-right: 1em;
   margin-top: 10px;
 `;
@@ -152,7 +150,9 @@ export const BoxMoves = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 350px;
   margin-top: 1rem;
+  overflow-y: auto;
 `;
 
 export const Moves = styled.div`

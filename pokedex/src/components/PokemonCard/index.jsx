@@ -9,20 +9,33 @@ import {
   TypePokemonCard,
   PokeballCard,
   PokemonImgCard,
-  ButtonCatch,
+  Button,
 } from "./style";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { goToPokemonDetail } from "../../routes/coordinator";
 import { colorType } from "../../constants/colorType";
 import { iconType } from "../../constants/iconType";
 import pokeball from "../../assets/pokeball_card.png";
+import useHasPokemon from "../../hooks/useHasPokemon";
 
 const PokemonCard = (props) => {
-  const { pokemon } = props;
+  const { pokemon, catchPokemon, deletePokemon, getLocalStorage } = props;
+  const [textButton, setTextButton] = useState("");
   const navigate = useNavigate();
   const [idPokemon, setIdPokemon] = useState(pokemon.id);
+  const { hasPokemon } = useHasPokemon(pokemon.id);
+  const location = useLocation().pathname;
 
   useEffect(() => {
+    ajustId();
+    classButton();
+  }, []);
+
+  useEffect(() => {
+    classButton();
+  }, [hasPokemon]);
+
+  const ajustId = () => {
     const id = idPokemon.toString();
 
     switch (id.length) {
@@ -33,26 +46,64 @@ const PokemonCard = (props) => {
       default:
         return setIdPokemon(idPokemon);
     }
-  }, []);
+  };
+
+  const classButton = () => {
+    const button = document.querySelector(`#btn${pokemon.id}`);
+    if (hasPokemon) {
+      if (location === "/") {
+        button.setAttribute("disabled", "disabeld");
+        button.classList.add("catchedPokemon");
+        setTextButton("Capturado");
+      } else {
+        button.classList.add("deletePokemon");
+        setTextButton("Excluir");
+      }
+    } else {
+      setTextButton("Capturar!");
+    }
+  };
+
+  const actionPokemon = (id) => {
+    if (hasPokemon) {
+      deletePokemon(id);
+    } else {
+      catchPokemon(id);
+    }
+  };
 
   return (
     <CardContainer>
-      <Card color={colorType(pokemon.types[0])}>
+      <Card color={colorType(pokemon.types[0].type.name)}>
         <div>
           <NumberPokemonCard># {idPokemon}</NumberPokemonCard>
           <NamePokemonCard>{pokemon.name}</NamePokemonCard>
           <TypesPokemonContainerCard>
             {pokemon.types.map((type) => {
-              return <TypePokemonCard key={type} src={iconType(type)} />;
+              return (
+                <TypePokemonCard
+                  key={type.type.name}
+                  src={iconType(type.type.name)}
+                />
+              );
             })}
           </TypesPokemonContainerCard>
-          <ButtonDetailsCard onClick={() => goToPokemonDetail(navigate)}>
+          <ButtonDetailsCard
+            onClick={() => goToPokemonDetail(navigate, pokemon.id)}
+          >
             Detalhes
           </ButtonDetailsCard>
         </div>
         <div>
-          <PokemonImgCard src={pokemon.sprites["official_artwork"]} />
-          <ButtonCatch>Capturar!</ButtonCatch>
+          <PokemonImgCard
+            src={pokemon.sprites.other["official-artwork"].front_default}
+          />
+          <Button
+            id={`btn${pokemon.id}`}
+            onClick={() => actionPokemon(pokemon.id)}
+          >
+            {textButton}
+          </Button>
         </div>
         <PokeballCard src={pokeball} alt="" />
       </Card>

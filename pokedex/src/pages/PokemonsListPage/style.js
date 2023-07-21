@@ -15,4 +15,5 @@ export const PokemonList = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 `;
