@@ -19,11 +19,11 @@ import pokeball from "../../assets/pokeball_card.png";
 import useHasPokemon from "../../hooks/useHasPokemon";
 
 const PokemonCard = (props) => {
-  const { pokemon, catchPokemon, deletePokemon, getLocalStorage } = props;
+  const { pokemon, pokedexIds, catchPokemon, deletePokemon } = props;
   const [textButton, setTextButton] = useState("");
   const navigate = useNavigate();
   const [idPokemon, setIdPokemon] = useState(pokemon.id);
-  const { hasPokemon } = useHasPokemon(pokemon.id);
+  const { hasPokemon } = useHasPokemon(pokemon.id, pokedexIds);
   const location = useLocation().pathname;
 
   useEffect(() => {

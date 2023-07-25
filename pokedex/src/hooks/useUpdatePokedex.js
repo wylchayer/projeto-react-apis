@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useUpdatePokedex = () => {
+const useUpdatePokedex = (setChangeModal, setIsYours) => {
   const [pokedexIds, setPokedexIds] = useState([]);
 
   useEffect(() => {
@@ -29,14 +29,18 @@ const useUpdatePokedex = () => {
       return currentId - nextId;
     });
     setPokedexIds(sortedList);
+    setIsYours(true);
+    setChangeModal(true);
   };
 
   const deletePokemon = (deleteId) => {
     const list = pokedexIds.filter((currentId) => {
       return currentId !== deleteId;
     });
-    list.length && localStorage.removeItem("PokedexIds");
     setPokedexIds(list);
+    !list.length && localStorage.removeItem("PokedexIds");
+    setIsYours(false);
+    setChangeModal(true);
   };
 
   return { pokedexIds, catchPokemon, deletePokemon };

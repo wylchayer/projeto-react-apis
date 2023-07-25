@@ -46,6 +46,18 @@ const PokemonDetailPage = () => {
 
   const idRender = pokemon.id && checkIdPokemon();
 
+  const moveCapitalize = (move) => {
+    const moveArray = move.split("-");
+
+    const moveCapitalized = moveArray
+      .map((mov) => {
+        return mov[0].toUpperCase() + mov.substring(1);
+      })
+      .join(" ");
+
+    return moveCapitalized;
+  };
+
   const totalStats =
     pokemon.id &&
     pokemon.stats.reduce((total, stat) => {
@@ -120,12 +132,14 @@ const PokemonDetailPage = () => {
                     })}
                   </TypesPokemonContainerDetail>
                 </DetailTypes>
-                <BoxInfos className="boxMoves">
+                <BoxInfos>
                   <h3>Moves:</h3>
                   <BoxMoves>
                     {pokemon.moves.map((move) => {
                       return (
-                        <Moves key={move.move.name}>{move.move.name}</Moves>
+                        <Moves key={move.move.name}>
+                          {moveCapitalize(move.move.name)}
+                        </Moves>
                       );
                     })}
                   </BoxMoves>
