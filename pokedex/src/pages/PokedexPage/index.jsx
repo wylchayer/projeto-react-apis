@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonCard from "../../components/PokemonCard";
 import { PokedexListContainer, PokedexList } from "./style";
 import Header from "../../components/Header";
 import useUpdatePokedex from "../../hooks/useUpdatePokedex";
 import { useRequestListPokemon } from "../../hooks/useRequestPokemons";
+import ModalCatchDelete from "../../components/ModalCatchDelete";
 
 const PokedexPage = () => {
-  const { pokedexIds, catchPokemon, deletePokemon } = useUpdatePokedex();
+  const [changeModal, setChangeModal] = useState(false);
+  const [isYours, setIsYours] = useState(false);
+  const { pokedexIds, catchPokemon, deletePokemon } = useUpdatePokedex(setChangeModal, setIsYours);
   const [pokemonsList, isLoading, isError] = useRequestListPokemon(pokedexIds);
 
   return (
@@ -27,6 +30,7 @@ const PokedexPage = () => {
                 <PokemonCard
                   key={pokemon.id}
                   pokemon={pokemon}
+                  pokedexIds={pokedexIds}
                   catchPokemon={catchPokemon}
                   deletePokemon={deletePokemon}
                 />
@@ -34,6 +38,9 @@ const PokedexPage = () => {
             })
           )}
         </PokedexList>
+        {changeModal && (
+          <ModalCatchDelete check={isYours} setChangeModal={setChangeModal} />
+        )}
       </PokedexListContainer>
     </>
   );

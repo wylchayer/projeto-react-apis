@@ -3,10 +3,19 @@ import useUpdatePokedex from "./useUpdatePokedex";
 import { goToPokedex } from "../routes/coordinator";
 import useHasPokemon from "./useHasPokemon";
 
-const useDefineButtonHeader = (idPokemon, location, navigate) => {
-  const [thisButton, setThisButton] = useState({});
-  const { hasPokemon } = useHasPokemon(idPokemon);
-  const { catchPokemon, deletePokemon } = useUpdatePokedex(idPokemon);
+const useDefineButtonHeader = (
+  idPokemon,
+  location,
+  navigate,
+  setChangeModal,
+  setIsYours
+) => {
+  const [button, setButton] = useState({});
+  const { pokedexIds, catchPokemon, deletePokemon } = useUpdatePokedex(
+    setChangeModal,
+    setIsYours
+  );
+  const { hasPokemon } = useHasPokemon(idPokemon, pokedexIds);
 
   useEffect(() => {
     defineButton();
@@ -14,25 +23,25 @@ const useDefineButtonHeader = (idPokemon, location, navigate) => {
 
   const defineButton = () => {
     if (location === "/") {
-      setThisButton({
+      setButton({
         name: "Pokédex",
         class: "toPokedexPage",
         click: "goToPokedex",
       });
     } else if (location.includes("detail")) {
       hasPokemon
-        ? setThisButton({
+        ? setButton({
             name: "Excluir da Pokédex",
             class: "deletePokemon",
             click: "deletePokemon",
           })
-        : setThisButton({
+        : setButton({
             name: "Capturar!",
             class: "catchPokemon",
             click: "catchPokemon",
           });
     } else {
-      setThisButton({
+      setButton({
         name: "",
         class: "",
         click: "",
@@ -41,7 +50,7 @@ const useDefineButtonHeader = (idPokemon, location, navigate) => {
   };
 
   const clickButton = () => {
-    switch (thisButton.click) {
+    switch (button.click) {
       case "goToPokedex":
         goToPokedex(navigate);
         break;
@@ -57,7 +66,7 @@ const useDefineButtonHeader = (idPokemon, location, navigate) => {
     }
   };
 
-  return [thisButton, clickButton];
+  return { button, clickButton };
 };
 
 export default useDefineButtonHeader;

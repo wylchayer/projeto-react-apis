@@ -35,7 +35,7 @@ export const useRequestListPokemon = (idsPokemons) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    pokemonsList.length || getListPokemons();
+    getListPokemons();
   }, [idsPokemons]);
 
   const getListPokemons = async () => {

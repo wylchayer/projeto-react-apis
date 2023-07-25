@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import useUpdatePokedex from "./useUpdatePokedex";
 
-const useHasPokemon = (idPokemon) => {
+const useHasPokemon = (idPokemon, pokedexIds) => {
   const [hasPokemon, setHasPokemon] = useState(false);
-  const { pokedexIds } = useUpdatePokedex();
 
   useEffect(() => {
     checkHasPokemon();
-  }, [pokedexIds, idPokemon]);
+  }, [pokedexIds]);
 
   const checkHasPokemon = () => {
+    // pokedexIds.includes(idPokemon) ? setHasPokemon(true) : setHasPokemon(false)
     const has = pokedexIds.filter((id) => {
       return id === idPokemon;
     });
-    has.length && setHasPokemon(true);
+    has.length ? setHasPokemon(true) : setHasPokemon(false);
   };
 
   return { hasPokemon };
