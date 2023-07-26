@@ -12,8 +12,7 @@ export const PokemonListContainer = styled.main`
 `;
 
 export const PokemonList = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+  justify-items: center;
 `;
