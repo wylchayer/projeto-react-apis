@@ -12,9 +12,9 @@ export const PokedexListContainer = styled.main`
 `;
 
 export const PokedexList = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+  justify-items: center;
 
   > h3 {
     flex-grow: 1;
