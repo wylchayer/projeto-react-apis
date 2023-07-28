@@ -17,9 +17,8 @@ export const PokedexList = styled.section`
   justify-items: center;
 
   > h3 {
-    flex-grow: 1;
     text-align: center;
-    justify-self: center;
     font-size: 2rem;
+    grid-column: 2;
   }
 `;

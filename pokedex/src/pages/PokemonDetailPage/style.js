@@ -46,11 +46,19 @@ export const DetailPokemon = styled.article`
   }
 `;
 
-export const MiniImg = styled.img`
+export const FigureImg = styled.figure`
   background-color: #ffffff;
   border-radius: 8px;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const MiniImg = styled.img`
+  height: 50%;
+  width: 50%;
 
   &.frontImg {
     grid-area: frontalImg;

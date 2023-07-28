@@ -2,6 +2,7 @@ import React from "react";
 import {
   DetailContainer,
   DetailCardContainer,
+  FigureImg,
   MiniImg,
   DetailPokemon,
   BoxInfos,
@@ -77,16 +78,26 @@ const PokemonDetailPage = () => {
           pokemon.id && (
             <DetailCardContainer color={colorType(pokemon.types[0].type.name)}>
               <DetailPokemon>
-                <MiniImg
-                  className="frontImg"
-                  src={pokemon.sprites.front_default}
-                  alt=""
-                />
-                <MiniImg
-                  className="backImg"
-                  src={pokemon.sprites.back_default}
-                  alt=""
-                />
+                <FigureImg>
+                  <MiniImg
+                    className="frontImg"
+                    src={
+                      pokemon.sprites.versions["generation-v"]["black-white"]
+                        .animated.front_default
+                    }
+                    alt=""
+                  />
+                </FigureImg>
+                <FigureImg>
+                  <MiniImg
+                    className="backImg"
+                    src={
+                      pokemon.sprites.versions["generation-v"]["black-white"]
+                        .animated.back_default
+                    }
+                    alt=""
+                  />
+                </FigureImg>
                 <BoxInfos>
                   <h3>Base stats</h3>
                   <BoxStats>
