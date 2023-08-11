@@ -1,7 +1,10 @@
+import GlobalContext from "./GlobalContext";
 import { useEffect, useState } from "react";
 
-const useUpdatePokedex = (setChangeModal, setIsYours) => {
+const GlobalState = (props) => {
   const [pokedexIds, setPokedexIds] = useState([]);
+  const [changeModal, setChangeModal] = useState(false);
+  const [isYours, setIsYours] = useState(false);
 
   useEffect(() => {
     getLocalStorage();
@@ -43,7 +46,21 @@ const useUpdatePokedex = (setChangeModal, setIsYours) => {
     setChangeModal(true);
   };
 
-  return { pokedexIds, catchPokemon, deletePokemon };
+  const data = {
+    pokedexIds,
+    catchPokemon,
+    deletePokemon,
+    changeModal,
+    setChangeModal,
+    isYours,
+    setIsYours,
+  };
+
+  return (
+    <GlobalContext.Provider value={data}>
+      {props.children}
+    </GlobalContext.Provider>
+  );
 };
 
-export default useUpdatePokedex;
+export default GlobalState

@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PokemonCard from "../../components/PokemonCard";
 import { PokedexListContainer, PokedexList } from "./style";
 import Header from "../../components/Header";
-import useUpdatePokedex from "../../hooks/useUpdatePokedex";
 import { useRequestListPokemon } from "../../hooks/useRequestPokemons";
 import ModalCatchDelete from "../../components/ModalCatchDelete";
+import GlobalContext from "../../context/GlobalContext";
 
 const PokedexPage = () => {
-  const [changeModal, setChangeModal] = useState(false);
-  const [isYours, setIsYours] = useState(false);
-  const { pokedexIds, catchPokemon, deletePokemon } = useUpdatePokedex(setChangeModal, setIsYours);
+  const context = useContext(GlobalContext);
+  const {
+    pokedexIds,
+    catchPokemon,
+    deletePokemon,
+    changeModal,
+    setChangeModal,
+    isYours,
+  } = context;
   const [pokemonsList, isLoading, isError] = useRequestListPokemon(pokedexIds);
 
   return (
