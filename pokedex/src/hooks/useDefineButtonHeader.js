@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
-import useUpdatePokedex from "./useUpdatePokedex";
+import { useContext, useEffect, useState } from "react";
 import { goToPokedex } from "../routes/coordinator";
 import useHasPokemon from "./useHasPokemon";
+import GlobalContext from "../context/GlobalContext";
 
-const useDefineButtonHeader = (
-  idPokemon,
-  location,
-  navigate,
-  setChangeModal,
-  setIsYours
-) => {
+const useDefineButtonHeader = (idPokemon, location, navigate) => {
   const [button, setButton] = useState({});
-  const { pokedexIds, catchPokemon, deletePokemon } = useUpdatePokedex(
-    setChangeModal,
-    setIsYours
-  );
+  const context = useContext(GlobalContext);
+  const { pokedexIds, catchPokemon, deletePokemon } = context;
   const { hasPokemon } = useHasPokemon(idPokemon, pokedexIds);
 
   useEffect(() => {
