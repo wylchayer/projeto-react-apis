@@ -1,61 +1,116 @@
-# **Projeto React e API's**
-O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
+<h1 align="center">Projeto Pokedex</h1>
 
-Este projeto terá como fonte de dados para a sua criação a [Poke Api](https://pokeapi.co/ "Poke Api"), uma Api pública, muito usada para aplicações focadas em aprendizado de programação e também usada em cases de processos seletivos.
+<div align="center">
 
-Os conteúdos principais  a serem estudados são:
+<!-- <img src="./pokedex/src/prints-pokedex/.gif" alt="apresentação" style="height: 300px"> -->
 
-- Integração de APIs
-- React Router
-- Design Systems
-- Estado Global
+</div>
 
-## **Enunciado**
-É objetivo deste projeto criar um site com três páginas usando a Poke Api com as seguintes ferramentas:
+<p align="center"><strong>Deploy: </strong> <a href="https://wylchayer.github.io/projeto-react-apis/">https://wylchayer.github.io/projeto-react-apis/</a> </p>
+<br>
+<p align="center">
+<span><strong>Tecnologias utilizadas:</strong></span>
+<br>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=js,react,styledcomponents,github,git,vite" style="height: 30px;" />
+  </a>
+</p>
 
-- React
-- React Router
-- Styled-components
-- React Context
-- Axios
+## Índice
 
-### **Requisitos**
-- **Gerais:**
-	- [ ] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
-	- [ ] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
-	- [ ] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
+* [1. Resumo do Projeto](#1-resumo-do-projeto)
+* [2. Definição do Projeto](#2-definição-do-projeto)
+* [3. Instalações](#3-instalações)
+* [4. Iniciando](#4-iniciando)
+* [5. Tecnologias utilizadas](#5-tecnologias-utilizadas)
+* [6. Lista de Requisitos do Projeto](#6-lista-de-requisitos-do-projeto)
+* [7. Desenvolvedor](#6-desenvolvedor)
+
+***
+## 1. Resumo do Projeto
+
+A **Pokedex** foi o último projeto do módulo de front-end *bootcamp da Labenu*. O principal objetivo era desenvolver uma plataforma que fosse possível capturar e excluir os pokemons, utilizando os seguintes conteúdos:
+ - integração com a [*pokeapi*](https://pokeapi.co/);
+ - custom hooks;
+ - react router;
+ - estado global;
+
+Com esses conteúdos foi desenvolvido a [**Pokedex**](https://github.com/wylchayer/projeto-react-apis/).
+
+***
+## 2. Definição do Projeto
+A [**Pokedex**](https://github.com/wylchayer/projeto-react-apis/) é uma plataforma utilizada para capturar, excluir e ver detalhes dos Pokemons, utilizando a [*pokeapi*](https://pokeapi.co/). 
+
+
+A página inicial apresenta aos usuários os pokemons, mostrando o nome e algumas informações básicas. Nesta tela é possível, em cada cartão, capturar o pokemon e/ou ver os detalhes deste. 
+
+<p align="center"><img src="./pokedex/src/prints-pokedex/print-projeto-pokedex.png" alt="Pokedex" style="height: 400px"></p>
+
+Ao clicar em capturar o pokemon, é informado que ele foi capturado e é transferido para a página da Pokedex, onde consta todos os pokemons capturados e também é possível excluí-los da pokedex.
+
+<p align="center"><img src="./pokedex/src/prints-pokedex/print-pokedexpage.png" alt="Filtros" style="width: 600px"></p>
+
+Em qualquer página que apresente um card de pokemon, é possível clicar em detalhes e, assim, será apresentada uma nova página mostrando mais detalhes desse pokemon, como as estatísticas básicas e os golpes.
+
+<p align="center"><img src="./pokedex/src/prints-pokedex/print-detailpage.png" alt="Filtros" style="height: 400px"></p>
+
+
+
+***
+## 3. Instalações
+
+### Pré-requisitos:
+* node.js
+* npm
+
+***
+
+## 4. Iniciando
+
+* Para instalar as dependências no diretório do seu projeto execute:
+```
+npm install
+```
+
+* Para iniciar o aplicativo execute:
+```
+npm run dev
+```
+
+***
+
+## 5. Tecnologias utilizadas
+Esse programa foi construído com:
+* JavaScript
+* React
+* Styled-Components
+
+***
+
+## 6. Lista de Requisitos do Projeto
+
+- **Gerais**
+    - ✅  O site deve ter 3 páginas: Home, Pokedex e Detalhes;
+    - ✅  Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
+    - ✅  O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
 - **Página Home:**
-	- [ ]  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
-	- [ ] Cada Pokemon será representado por um Card;
-	- [ ] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
-	- [ ] Header dessa página terá um botão para acessar a página da Pokedex
+    - ✅  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
+    - ✅  Cada Pokemon será representado por um Card;
+    - ✅  Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
+    - ✅  Header dessa página terá um botão para acessar a página da Pokedex
 - **Página Pokédex**
-	- [ ] Renderizar a lista de pokémons adicionados na pokedex;
-	- [ ] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
-	- [ ] Header deve ter um botão para voltar para a Home
-	- [ ] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
+    - ✅  Renderizar a lista de pokémons adicionados na pokedex;
+    - ✅  Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
+    - ✅  Header deve ter um botão para voltar para a Home
+    - ✅  Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
 - **Página de Detalhes**
-	- [ ] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [ ] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
-- [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
+    - ✅  Mostrar os detalhes do Pokemon selecionado, com informações descritas
+    - ✅  Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 
 
-### Instruções para preparar o seu repositório
+***
 
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-lista-intro-javascript`.
-   <details>
-   <summary>Quer uma dica?</summary>
-   <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
-   </details>
-- Crie os arquivos do projeto dentro deste repo;
-- **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Não faça as alterações direto na branch ```main```!
+## 7. Desenvolvedor
+ Este projeto foi desenvolvido por:
+* **Wylchayer Cruz** : [Linkedin](https://www.linkedin.com/in/wylchayer-cruz/) | [GitHub](https://github.com/wylchayer)
 
-### Instruções de entrega
-
-![image](https://user-images.githubusercontent.com/71137294/227538428-52271ed2-df78-4500-b286-25f03aa7bf2e.png)
-1.  [Crie o surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96) do seu projeto e pegue o link da publicação(deploy);
-2.  Adicione o link do surge no readme do seu projeto;
-3.  Tire print das páginas do seu projeto e cole no readme;
-4.  Abra um novo Pull Request (PR) com a frase **PR para correção**. Caso não saiba como fazê-lo, assista a esse [vídeo](https://vimeo.com/842884374/3e403f4281?share=copy).
-5.  Envie o link do seu PR e do surge no [formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
