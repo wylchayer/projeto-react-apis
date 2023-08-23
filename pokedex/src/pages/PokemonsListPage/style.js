@@ -1,14 +1,29 @@
 import styled from "styled-components";
 
 export const PokemonListContainer = styled.main`
-  background-color: #5d5d5d;
+  background-color: #888888;
   color: #ffffff;
   padding: 2%;
+`;
+
+export const HeaderListPage = styled.div`
+  display: flex;
+  justify-content: space-between;
 
   > h2 {
     margin-bottom: 1rem;
     font-size: 48px;
     font-weight: 700;
+  }
+`;
+
+export const DivSelect = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+
+  > select {
+    margin-left: 5px;
   }
 `;
 

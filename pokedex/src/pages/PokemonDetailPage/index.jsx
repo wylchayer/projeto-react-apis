@@ -30,7 +30,7 @@ import { useRequestPokemon } from "../../hooks/useRequestPokemons";
 
 const PokemonDetailPage = () => {
   const params = useParams();
-  const [pokemon, isLoading, isError] = useRequestPokemon(params.idPokemon);
+  const {pokemon, isLoading, isError} = useRequestPokemon(params.idPokemon);
 
   const checkIdPokemon = () => {
     const id = pokemon.id.toString();

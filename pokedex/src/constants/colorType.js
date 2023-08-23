@@ -1,42 +1,42 @@
 export const colorType = (type) => {
   switch (type) {
     case "poison":
-      return "#AD61AE";
+      return "#9D419E";
     case "grass":
-      return "#70B873";
+      return "#509853";
     case "fire":
-      return "#F44900";
+      return "#D42900";
     case "flying":
-      return "#6892B0";
+      return "#487290";
     case "water":
-      return "#33A4F5";
+      return "#1384D5";
     case "bug":
-      return "#316520";
+      return "#114500";
     case "normal":
-      return "#8A8A8A";
+      return "#6A6A6A";
     case "dark":
-      return "#5C5365";
+      return "#3C3345";
     case "dragon":
-      return "#0A6CBF";
+      return "#0A4C9F";
     case "electric":
-      return "#F4D23B";
+      return "#D4B21B";
     case "fairy":
-      return "#EC8FE6";
+      return "#CC6FC6";
     case "fighting":
-      return "#CE4069";
+      return "#AE2049";
     case "ghost":
-      return "#5269AC";
+      return "#32498C";
     case "ground":
-      return "#D97745";
+      return "#B95725";
     case "ice":
-      return "#74CEC0";
+      return "#54AEA0";
     case "psychic":
-      return "#F67176";
+      return "#D65156";
     case "rock":
-      return "#C7B78B";
+      return "#A7976B";
     case "steel":
-      return "#BBBBBB";
+      return "#9B9B9B";
     default:
-      return "#5C5365";
+      return "#5C5365"; //dark
   }
 };

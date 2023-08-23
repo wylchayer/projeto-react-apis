@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/BASE_URL";
 
@@ -6,15 +6,30 @@ export const useRequestListPokemonsInitial = () => {
   const [pokemonsListInitial, setPokemonsListInitial] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [pokemonPerPage, setPokemonPerPage] = useState(30);
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = Math.ceil(150 / pokemonPerPage);
 
   useEffect(() => {
     getListPokemonsInitial();
   }, []);
 
+  useEffect(() => {
+    getListPokemonsInitial();
+  }, [currentPage]);
+
+  useEffect(() => {
+    getListPokemonsInitial();
+  }, [pokemonPerPage]);
+
   const getListPokemonsInitial = async () => {
     setIsLoading(true);
     try {
-      const respUrls = await axios.get(`${BASE_URL}pokemon?limit=20&offset=0`);
+      const respUrls = await axios.get(
+        `${BASE_URL}pokemon?limit=${pokemonPerPage}&offset=${
+          currentPage * pokemonPerPage
+        }`
+      );
       const respPokemon = await axios.all(
         respUrls.data.results.map((url) => axios.get(url.url))
       );
@@ -26,13 +41,28 @@ export const useRequestListPokemonsInitial = () => {
       setIsError(true);
     }
   };
-  return { pokemonsListInitial, isLoading, isError, getListPokemonsInitial };
+  return {
+    pokemonsListInitial,
+    isLoading,
+    isError,
+    setCurrentPage,
+    totalPages,
+    pokemonPerPage,
+    setPokemonPerPage,
+  };
 };
 
 export const useRequestListPokemon = (idsPokemons) => {
   const [pokemonsList, setPokemonsList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [pokemonPerPage, setPokemonPerPage] = useState(30);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const totalPages = Math.ceil(pokemonsList.length / pokemonPerPage);
+  const startIndex = currentPage * pokemonPerPage;
+  const endIndex = startIndex + pokemonPerPage;
+  const pokemonsView = pokemonsList.slice(startIndex, endIndex);
 
   useEffect(() => {
     getListPokemons();
@@ -55,7 +85,15 @@ export const useRequestListPokemon = (idsPokemons) => {
     }
   };
 
-  return [pokemonsList, isLoading, isError];
+  return {
+    pokemonsView,
+    isLoading,
+    isError,
+    setCurrentPage,
+    totalPages,
+    pokemonPerPage,
+    setPokemonPerPage,
+  };
 };
 
 export const useRequestPokemon = (idPokemon) => {
@@ -78,5 +116,5 @@ export const useRequestPokemon = (idPokemon) => {
       });
   };
 
-  return [pokemon, isLoading, isError];
+  return { pokemon, isLoading, isError };
 };
