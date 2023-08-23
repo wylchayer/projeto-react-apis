@@ -33,6 +33,7 @@
 A **Pokedex** foi o último projeto do módulo de front-end _bootcamp da Labenu_. O principal objetivo era desenvolver uma plataforma que fosse possível capturar e excluir os pokemons, utilizando os seguintes conteúdos:
 
 - integração com a [_pokeapi_](https://pokeapi.co/);
+- paginação;
 - custom hooks;
 - react router;
 - estado global;
